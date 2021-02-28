@@ -63,5 +63,19 @@ class RestaurantTest {
         restaurant.addToMenu("Vegetable lasagne", 269); 
         assertThrows(itemNotFoundException.class,()->restaurant.removeFromMenu("French fries"));
     }
+    
+
+    @Test
+       public void get_total_cost_of_selected_items_from_menu(){
+           LocalTime openingTime = LocalTime.parse("10:30:00");
+           LocalTime closingTime = LocalTime.parse("22:00:00");
+           restaurant =new Restaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+           restaurant.addToMenu("Sweet corn soup",119);
+           restaurant.addToMenu("Vegetable lasagne", 269);
+           restaurant.addToMenu("Panner Chilly", 320);
+           restaurant.addToMenu("French Fries", 170);
+           
+          assertEquals(490,restaurant.total_price_of_selected_items_from_menu("Panner Chilly","French Fries"));
+       }
    
   }
