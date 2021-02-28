@@ -71,6 +71,21 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-    
+    public int total_price_of_selected_items_from_menu(String... items ) {
+    	int index =0;
+    	int price =0;
+    	int totalprice =0;
+    	String menuoutput[];
+    	for(String selected_item : items) {
+    		Item objselecteditem = findItemByName(selected_item);
+    		if(menu.contains(objselecteditem)) {
+    			menuoutput = objselecteditem.toString().split(":");
+    			price = Integer.valueOf(menuoutput[1].trim());
+    			totalprice = totalprice+price;
+    		}
+    		index++;
+    	}
+    	return totalprice; 
+    }
    
 }
